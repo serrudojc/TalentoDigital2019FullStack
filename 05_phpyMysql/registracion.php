@@ -63,18 +63,20 @@ $mensajeError = "";
 
     //--------------------------------------------------------------
     //agrego fecha de registración
-    $fechaRegistro = date("Y/m/d");
+    $fechaRegistro = date("Y-m-d");
+    echo "$fechaRegistro";
 
     //--------------------------------------------------------------
     //Ahora deberia enviar a la base de datos
 
     $conexion = mysqli_connect("localhost:3306", "root", "", "tododb");
-    $sql = "INSERT INTO usuariosTodo (nombre, usuario, pass, email, fechaRegistro) VALUES ('$nombre','$usuario','$pass','$email','$fechaRegistro')";
+    $sql = "INSERT INTO usuariostodo (nombre, usuario, pass, email, fechaRegistro) VALUES ('$nombre','$usuario','$pass_encriptado','$email','$fechaRegistro')";
 
     $respuesta_consulta = mysqli_query($conexion, $sql);
     if($respuesta_consulta == false){
         die("No se pudo ingresar el registro en la base de datos");
     }
+    echo "<br>";
     echo "Registro ingresado ;-)";
 
 ​?>
