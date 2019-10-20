@@ -8,15 +8,17 @@ echo "<table border=1>";
         echo"<th>Id</th>
              <th>Tarea</th>
              <th>Terminada</th>
-             <th>Fecha</th>"; 
+             <th>FechaLimite</th>
+             <th>FechaCreacion</th>"; 
     echo"</tr>";
 while ($registro = mysqli_fetch_array($consulta)){
     $id = $registro["id"];
     $tarea = $registro["tarea"];
     $terminada = $registro["terminada"];
-    $fecha = $registro["fecha"];
+    $fechaLimite = $registro["fechaLimite"];
+    $fechaCreacion = $registro["fechaCreacion"];
     echo"<tr>";
-    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fecha</td>";
+    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fechaLimite<td>$fechaCreacion</td>";
     echo"</tr>";
 }
 echo "</table>";
@@ -31,15 +33,17 @@ echo "<table>";
         echo"<th>Id</th>
              <th>Tarea</th>
              <th>Terminada</th>
-             <th>Fecha</th>"; 
+             <th>FechaLimite</th>
+             <th>FechaCreacion</th>"; 
     echo"</tr>";
 while ($registro = mysqli_fetch_array($consulta)){
     $id = $registro["id"];
     $tarea = $registro["tarea"];
     $terminada = $registro["terminada"];
-    $fecha = $registro["fecha"];
+    $fechaLimite = $registro["fechaLimite"];
+    $fechaCreacion = $registro["fechaCreacion"];
     echo"<tr>";
-    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fecha</td>";
+    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fechaLimite<td>$fechaCreacion</td>";
     echo"</tr>";
 }
 echo "</table>";
@@ -54,15 +58,17 @@ echo "<table border=02>";
         echo"<th>Id</th>
              <th>Tarea</th>
              <th>Terminada</th>
-             <th>Fecha</th>"; 
+             <th>FechaLimite</th>
+             <th>FechaCreacion</th>"; 
     echo"</tr>";
 while ($registro = mysqli_fetch_array($consulta)){
     $id = $registro["id"];
     $tarea = $registro["tarea"];
     $terminada = $registro["terminada"];
-    $fecha = $registro["fecha"];
+    $fechaLimite = $registro["fechaLimite"];
+    $fechaCreacion = $registro["fechaCreacion"];
     echo"<tr>";
-    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fecha</td>";
+    echo "<td>$id</td><td>$tarea<td>$terminada<td>$fechaLimite<td>$fechaCreacion</td>";
     echo"</tr>";
 }
 echo "</table>";

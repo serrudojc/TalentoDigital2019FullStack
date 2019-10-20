@@ -26,7 +26,7 @@ if(empty($_POST['laFecha'])){
 */
 
 $tarea = trim($_POST['tarea']);
-//$fecha = $_POST['laFecha'];
+$fechaLimite = $_POST['fechaLimite'];
 $lenTarea = strlen($tarea);
 if($lenTarea == 0){
     echo "Se ingresaron espacios en blanco";
@@ -36,8 +36,9 @@ if($lenTarea == 0){
 $fechaActual = date("Y/m/d");
 
 $conexion = mysqli_connect("localhost", "root", "", "tododb");
-//$sql = "insert into todo (tarea, fecha,fechaCreacion) values ('$tarea', '$fecha','$fechaActual')";
-$sql = "insert into todo (tarea, fechaCreacion) values ('$tarea','$fechaActual')";
+
+$sql = "insert into todo (tarea, fechaLimite, fechaCreacion) values ('$tarea', '$fechaLimite', '$fechaActual')";
+//echo $sql;
 
 $respuesta_consulta = mysqli_query($conexion, $sql);
 if($respuesta_consulta == false){
