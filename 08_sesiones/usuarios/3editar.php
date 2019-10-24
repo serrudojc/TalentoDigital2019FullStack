@@ -36,5 +36,6 @@ if(empty($_POST)==false){
         die("No se pudo hacer la consulta.");
     }
     echo "Contraseña cambiada.";
+    header("Location: http://localhost/practicas/08_sesiones/usuarios/3edicionPassUsr.php");
 }
 ?>

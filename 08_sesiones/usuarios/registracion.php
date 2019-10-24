@@ -154,8 +154,8 @@ if(!empty($_POST)){
             if($respuesta_consulta == false){
                 die("No se pudo ingresar el registro en la base de datos");
             }
-            echo "<br>";
-            echo "Registro ingresado ;-)";
+            //echo "Registro ingresado ;-)";
+            header("Location: http://localhost/practicas/08_sesiones/usuarios/menu.html");
         }
     }
 }

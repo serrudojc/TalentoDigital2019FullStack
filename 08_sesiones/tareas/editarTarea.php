@@ -12,11 +12,12 @@
                 <option value="2">Finalizas</option>
             </select> 
             <br>
-            <button type="submit">:: Filtrar ::</button>
-            <a href='altaTareas.php'>Alta Tarea</a><br>
-            <br><br>
-            <a href='http://localhost/jc/08_sesiones/usuarios/logout.php'>Salir</a><br>
-            <br>                  
+            <p><button type="submit">:: Filtrar ::</button></p>
+            <p><a href='altaTareas.php'>Alta Tarea</a></p>
+            <p>
+            <a href='http://localhost/practicas/08_sesiones/usuarios/menu.html'>Menú</a><br>
+            <a href='http://localhost/practicas/08_sesiones/usuarios/logout.php'>Salir</a><br>
+            </p>                  
         </form>
     </body>
 </html>
@@ -27,7 +28,7 @@ session_start();
 //echo $_SESSION['id'];
 
 if(isset($_SESSION['id'])==false){
-    header("Location: http://localhost/jc/08_sesiones/usuarios/validarUsuario.php");
+    header("Location: : http://localhost/jc/08_sesiones/usuarios/validarUsuario.php");
 }
 
 

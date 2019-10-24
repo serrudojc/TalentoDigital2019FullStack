@@ -12,7 +12,8 @@
                 </label>
             </p>
             <button type="submit" name="btn1">Entrar</button>
-            <br>                  
+            <br>
+            <a href='http://localhost/practicas/08_sesiones/usuarios/registracion.php'>Registrarse<a>                  
         </form>
     </body>
 </html>
@@ -57,9 +58,9 @@ if(!empty($_POST)){
 
         //creo variable session y redirecciono
         $_SESSION['id']=$vector_fila["id"];
-        //echo $vector_fila['id'];
-        header("Location: http://localhost/jc/08_sesiones/usuarios/menu.html");
+        //echo $vector_fila['id'];header("Location: http://localhost/practicas/08_sesiones/usuarios/menu.html");
 
+        
     }else{
         die("Contraseña incorrecta");
     }

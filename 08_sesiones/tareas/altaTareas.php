@@ -7,8 +7,10 @@
     <input type="date" name="fechaLimite">
     </label>
     <button type="submit">:: Añadir tarea ::</button>
-    <br><br>
-    <a href='http://localhost/jc/08_sesiones/usuarios/logout.php'>Salir</a>
+    <p>
+    <a href='http://localhost/practicas/08_sesiones/usuarios/menu.html'>Menú</a><br>
+    <a href='http://localhost/practicas/08_sesiones/usuarios/logout.php'>Salir</a><br>
+    </p> 
 </form>
 </html>
 
