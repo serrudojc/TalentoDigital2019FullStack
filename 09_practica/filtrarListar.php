@@ -5,27 +5,31 @@ session_start();
 //la validacion está en un include
 include 'includeValidacion.php';
 
+$varTarea = "";
+$varTipoTarea = "";
+
 if(isset($_SESSION['tarea'])){
     $varTarea = $_SESSION['tarea'];
-    echo "Existe var tarea. ";
+    echo "Existe var tarea= ".$varTarea."<br>";
 }else{
-    $varTarea = "";
-    //$varTipoTarea = "";
-    echo "No existe var tarea. ";
+    //$varTarea = "";
+    echo "No existe var tarea. <br>";
 }
 
 if(isset($_SESSION['tipoTarea'])){
     $varTipoTarea = $_SESSION['tipoTarea'];
-    echo "Existe var TipoTarea. ";
+    echo "Existe var TipoTarea= ".$varTipoTarea."<br>";
 }else{
-    $varTipoTarea = "";
-    echo "No existe var TipoTarea. ";
+    //$varTipoTarea = "";
+    echo "No existe var TipoTarea. <br>";
 }
+
+
 ?>
+
 <html>
     <body>
         <form action="" method="GET">
-            
             <label for="">Tareas
                 <input type="text" name='tarea' value=<?php echo $varTarea;?> >
             </label>
@@ -46,6 +50,8 @@ if(isset($_SESSION['tipoTarea'])){
 </html>
 
 <?php
+
+
 
 if(empty($_GET) == false){
     //Inicializo el filtro por tarea en vacio y pregunto si existe
@@ -94,5 +100,6 @@ if(empty($_GET) == false){
     }else{
         die("error, no hay datos");
     }
+    //header("Location: filtrarListar.php?tarea=$varTarea&tipoTarea=$varTipoTarea");
 }
 ?>
