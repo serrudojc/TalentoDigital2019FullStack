@@ -30,6 +30,41 @@ class EstadoDeAnimoController extends Controller
         $obj->save();
         return $obj;
     }
+/*
+    public function store(Request $request){
+        
+        //creo un nuevo estado de animo
+        $obj = new EstadoDeAnimo();
+        
+        //el model mapea con las columnas de la base de datos 
+        //todo el model mapea con una tabla
+        $obj->estado_animo = $request->estado_animo;
+
+        //para que se guarde en la DB
+        $obj->save();
+        return $obj;
+
+    }
+*/
+
+    public function delete($id){
+        //busco en la base de datos
+        $obj = EstadoDeAnimo::find($id);
+        //llamo a la funcion
+        $obj->delete();
+    }
+
+    public function update(Request $request, $id){
+        //traemos una instancia que ya teniamos
+        $obj = EstadoDeAnimo::find($id);
+        $obj->estado_animo = $request->estado_animo;    //va recibir una propiedad que se llama estado_animo 
+        $obj->save();
+        return $obj;
+
+    }
+
+
+
 
     /**
      * Display a listing of the resource.
@@ -52,16 +87,6 @@ class EstadoDeAnimoController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -85,17 +110,7 @@ class EstadoDeAnimoController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.

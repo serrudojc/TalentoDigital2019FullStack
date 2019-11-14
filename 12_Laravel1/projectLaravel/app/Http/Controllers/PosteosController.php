@@ -13,6 +13,8 @@ class PosteosController extends Controller
         return Posteos::all();
     }
 
+
+
     public function agregar(Request $request){
         $obj = new Posteos();
         $obj->post= $request->post;
@@ -22,6 +24,32 @@ class PosteosController extends Controller
         return $obj;
     }
     
+    public function delete($id){
+        //busco en la base de datos
+        $obj = Posteos::find($id);
+        //llamo a la funcion
+        $obj->delete();
+    }
+
+    public function update(Request $request, $id){
+        //traemos una instancia que ya teniamos
+        $obj = Posteos::find($id);
+        $obj->post = $request->post;
+        $obj->estado_animo_id = $request->estado_animo_id;$obj->fecha_entrada= $request->fecha_entrada; 
+        $obj->save();
+        return $obj;
+    }
+
+    public function listar_todo(){
+        return Posteos::with('estadoDeAnimo')->get();
+    }
+
+    public function listar_uno($id){
+        $posteos = Posteos::find($id);
+        return $posteos->Load('estadoDeAnimo');
+    
+    }
+  
 
     /**
      * Display a listing of the resource.
@@ -76,18 +104,18 @@ class PosteosController extends Controller
         //
     }
 
-    /**
+/*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     
     public function update(Request $request, $id)
     {
         //
     }
-
+/*
     /**
      * Remove the specified resource from storage.
      *

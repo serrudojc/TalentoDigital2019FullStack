@@ -359,4 +359,211 @@ BORRADO DE UN REGISTRO
 
 Se hace una peticion, borrado al estado de animo 3
 Delete/estados_de_animo/3
+
+
+
+
+//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
+
+Laravel 14              12/11/2019
+
+MOdel operaciones DB
+Controller  interacciona con el extetrior, cada ruta apuntaa a un metodo del controller 
+
+rutas:
+web.php: interfaz grafica
+api.php: retornar datos
+"Hacen lo mismo"
+
+petiones van a ser en base a aadministrar datos.
+Si queremos crear una ruta, para cada tabla, ponemos el nombre en plural en la url
+/estados_de_animo
+/posteos
+por convencion
+
+si ponemos en api.php, para acceder , agrego api:
+api/estados_de_animo
+
+
+
+Operaciones:
+Listar todos
+Obtener uno
+GuardaNuevo
+Actualizar
+Borrar
+
+/api/estados_de_animo
+si quiero traer yo liente, todos los estado de animo, hago peticion tipo get
+GET /api/estados_de_animo
+
+Si quiero traer solo un estado de animo
+GET /api/estados_de_animo/5     donde 5 es su id
+
+Si quiero crear un nuevo estado de animo
+POST /api/estados_de_animo
+el post me permite enviar informacion dentro del contenido
+(enviamos datos en formato JSON)
+
+Si quiero actualizar un estado de animo
+PUT /api/estaods_de_animo/4         si quiero actuaizar el estado 4
+(enviamos datos en formato JSON)
+
+Si quiero borrar un estado de animo
+DELETE /api/estaods_de_animo/4
+Con delete no paso nada informacion.
+
+Con un navegador solo podemos hacer peticiones tipo GET
+
+Para las otraas peticiones, usamos el postman
+
+//--------------------------------------------------------------------------------
+Corremos servidor
+localhost:8000/api/estados_de_animo
+
+pero tambien podemos usar el postman
+
+Cuando hacemos un post/body/raw/json
+y pongo la peticion de los datos que quiero enviar al server
+
+{
+    "estados-animo": "asdasadasda",
+}
+
+cuando toco enviar, hace una peticion tipo post a estados_de_animo
+
+
+PDF 15 //------------------------------------
+
+$request en esta variable, viene lo que pongo en el postman
+Es decir, se lo envio a store con $request
+
+public function store(Request $request){
+    
+    //creo un nuevo estado de animo
+    $obj = new EstadoDeAnimo();
+    
+    //el model mapea con las columnas de la base de datos 
+    //todo el model mapea con una tabla
+    $obj->estado_animo = $request->estado_animo;
+
+    //para que se guarde en la DB
+    $obj->save();
+    return $obj;
+
+}
+
+
+creo una ruta para que esto funcione en api.php
+No hace falta poner api/ dentro del parentesis, pq lo pone automaticamnete
+
+Route::post('/estados_de_animo','EstadoDeAnimoController@store');
+
+Elijo metodo POST
+voy al postman y hago la peticion. en el postman no hace falta poner ;
+{
+    "estado_animo": "Probando store"
+}
+
+luego enviar
+y vemos la peticon en body/pretty
+
+
+
+//----------------------------
+Borrar
+delete a una ruta
+
+    public function delete($id){
+        //busco en la base de datos
+        $obj = EstadoDeAnimo::find($id);
+        //llamo a la funcion
+        $obj->delete();
+    }
+
+
+//cuando me haga un delete a ..., llame un metodo al controller: controller@metodo
+
+Route::delete('/estados_de_animo/{id},'EstadoDeAnimoController@delete');
+
+Pongo en el postman la url, pero no me va devolver nada en el postman
+
+/*
+
+actualizar
+
+    public function update(Request $request, $id){
+        //traemos una instancia que ya teniamos
+        $obj = EstadoDeAnimo::find($id);
+        $obj->estado_animo = $request->estado_animo;    //va recibir una propiedad que se llama estado_animo 
+        $obj->save();
+        return $obj;
+
+    }
+
+Route::put('/etados_de_animo/{id}','EstadoDeAnimoController@update');
+
+Voy al postman
+PUT  http://localhost:8000/api/estados_de_animo/5
+En JSON pongo mi peticion
+{
+    "estado_animo": "Cambiando estado de animo"
+}
+
+//-----------------------------------------------------------------------------------
+Realaciones entre models
+Cuando entro a un post, puedo entrar al etado de animo asociado a ese posteado
+
+Hcemos las relaciones, hay qe codear en el moddel
+
+Agrego a Posteos.php la funcion
+
+    public function estadoDeAnimo(){
+        
+    }
+}
+
+Posteo id post estadoDeAnimo------------------>EstadoAnimo id estado_animo
+
+Cuando solo tengo uno del otro lado, un posteo tiene un solo estado de animo
+return $this->belongsTo('App\EstadoDeAnimo');
+
+
+//no me funciona, ademas de pasar el estado de animo, le voy a pasar la foregin key, si no, tengo que cambiar toda la estructura
+    public function estadoDeAnimo(){
+        return $this->belongsTo('App\EstadoDeAnimo','estado_animo_id');
+    }
+}
+
+
+quiero traer todos los posteos con el estaddo de animo
+En el controler
+public function listar_todo(){
+        return Posteos::with('estadoDeAnimo')->get();
+    }
+}
+
+
+
+
+/*
+Aca voy a tener un problema al mostrar todos por id o todos.
+Tengo que poner primero todo, y luego por id, si no, siempre va entrar por id y nunca voy a entrar por todos.
+Si no, la otra es cambiar en el metodo de get listar (linea 26), por listar_todos
+
+Route::get('/posts/listar_todo','PosteosController@listar_todo');
+Route::get('/posts/{id}','PosteosController@listar_uno');
+
+En el controller pongo esto
+
+    public function listar_uno($id){
+        $posteos = Posteos::find($id);
+        return $posteos->Load('estadoDeAnimo');
+    
+    }
+  
+
+
+*/
 ?>

@@ -6,6 +6,7 @@ session_start();
 include 'includeValidacion.php';
 $filtro = ""; 
 $filtroFin = "";
+$filtroFinConsulta = "";
 
 if(empty($_GET) == false){
     //Inicializo el filtro por tarea en vacio y pregunto si existe
@@ -22,18 +23,20 @@ if(empty($_GET) == false){
 
     //siempre viene como char. (terminada es una campo de la DB)
     if($filtroFin == "1")
-        $filtroFin = " AND terminada = 0";
+        $filtroFinConsulta = " AND terminada = 0";
     if($filtroFin == "2")
-        $filtroFin = " AND terminada = 1";
+        $filtroFinConsulta = " AND terminada = 1";
 
     $conexion = mysqli_connect("localhost","root","","tododb");
-    $sql = "SELECT * FROM todo WHERE tarea LIKE '%$filtro%'$filtroFin "; 
+    $sql = "SELECT * FROM todo WHERE tarea LIKE '%$filtro%'$filtroFinConsulta "; 
     $respuesta_consulta = mysqli_query($conexion, $sql);
 
     if($respuesta_consulta == false){
         die("No se pudo procesar la consulta.");
     }
 }
+
+echo $filtroFin;
 ?>
 
 <html>
@@ -83,6 +86,8 @@ if(empty($_GET) == false){
                 <td>";
                 if($registro['terminada']==0){
                     echo "<a href='finalizarT.php?id=$id'>Finalizar</a>";
+                }else{
+                    echo "Hecha";
                 }
             echo"</td>
                 <td><a href='borrarT.php?id=$id'>Borrar</a></br></td>
