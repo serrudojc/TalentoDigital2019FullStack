@@ -109,7 +109,8 @@ Practica 4 Diario intimo
     protected $table = "estados_de_animo";
     public $timestamps = false;
 
-
+Si desamos fechas de guardado y moficiacion public $timestamps = true;
+Y agregamos campos created_at y updated_at 
 
 
 -controllers
@@ -562,8 +563,56 @@ En el controller pongo esto
         return $posteos->Load('estadoDeAnimo');
     
     }
-  
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+
+CLase 15/11/2019
+Laravel 16: borrado logico
+
+//repaso
+Agregar un elemento, modificar, borrar y relaciones
+
+En laravel todo empieza con una ruta
+/posteos                (api.php)
+de la ruta, vamos a un metodo, que va usar un Model
+
+
+si queresmo traer todo los posteos /posteos
+
+GET /posteos
+
+PUT quiero actualizar
+DELETE borrar un posteo en particular
+
+
+Desde el punto de vista funcional, puedo uar GET o PUT, peo por convencion se usar (GET para crear un nuevo elemento y PUT para actualizar)
+
+Parte de rutas:
+
+Defino rutas api.php
+defino metodos PosteosController.php
+acordarse de poner el use App\Posteos; 
+
+
+//------------------------------------------------------------
+Borrado logico
+
+deleted_at es una fecha que borré, del tipo TIMESTAMSPS y permitir NULOS
+
 
 
 */
+
+/*
+CLAVE FORANEA
+
+la definimos en la table del campo que define la realacion
+Estructura/vista de relaciones.s
+
+
 ?>
