@@ -1,0 +1,20 @@
+<title>Login</title>
+<div class="container">
+    <h1>Login</h1>
+    {{mensaje_error}}
+    <form action="/login" method="POST">
+        <table>
+            <tr>
+                <td><label for="usuario">Usuario</label></td>
+                <td><input type="text" name="usuario" id="usuario" value="{{personita}}"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" name="password" id="password"></td>
+            </tr>
+        </table>
+        <button type="submit">Login</button>
+    </form>
+    <br>
+    <p><a href="/">Volver a home</a></p>
+</div>

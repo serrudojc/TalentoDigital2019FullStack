@@ -1,0 +1,52 @@
+<title>Listado novedades</title>
+<div class="container">
+    <h1>Listado de Novedades</h1>
+    <h3>Bienvenido {{nombre}}</h3><br>
+</div>
+
+<!--
+<table>
+    <tr>
+        <th>Novedad</th>
+        <th>Autor</th>
+    </tr>
+    {{#each lista}}
+    <tr>
+        <td>{{this.novedad}}</td>
+        <td>{{this.autor}}</td>
+    </tr>
+    {{/each}}
+</table>
+-->
+<div class= "container">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr style="width: 1000px">
+                <th style="width: 800px" scope="col">Novedad</th>
+                <th style="width: 180px" scope="col">Autor</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {{#each lista}}
+            <tr>
+                <td style="width: 800px">{{this.novedad}}</td>
+                <td style="width: 180px">{{this.autor}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+        
+    </table>
+</div>
+<br>
+<div class="container">
+    <h1>Agregar Novedades</h1><br>
+    {{mensaje_error}}
+    <form action="/novedades" method="post">
+        <label for="novedad">Novedad</label>
+        <input type="text" name="novedad" id="novedad">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+    <br>
+    <p><a href="/logout" class="badge badge-secondary">Salir</a></p>    
+</div>
