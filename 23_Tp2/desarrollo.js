@@ -94,6 +94,19 @@ El q interpreta esto, es un codigo
 //---------------------------
 
 
+Alguna notas personales:
+
+NO puedo tener dos res.render en una misma funcion
+por ejemplo
+if(algo){
+    res.render(...)
+}
+res.render(otra cosa)
+Me va tirar error la consola. Tengo que ponerlo dentro de un else.
+
+//--------------------------------------------------
+
+API
 
 
 
