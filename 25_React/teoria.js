@@ -87,7 +87,7 @@ IMPORTANTE
 
 
 ----------------------------- Instalacion ------------------------------
-Creamos una carpeta aparte.
+Creamos una carpeta aparte (me parece que no hace falta, se instala global)
 npm install -g create-react-app
 
 para crear una app de react. ADENTRO DE LA CARPETA DONDe esta nuestro proyecto
